@@ -108,7 +108,7 @@ export default function App() {
     setResult(null);
     setLoading(true);
     try {
-      const { status, data } = await callProvider("/api/v1/asegurados/validar", {
+      const { status, data } = await callProvider("/api/v2/asegurados/validar", {
         params: { tipoDocumento: tDoc, numeroDocumento: String(nDoc).trim() },
       });
       if (status === 200) setResult(data);
@@ -161,7 +161,7 @@ export default function App() {
       };
       if (reg.plan.trim()) body.plan = reg.plan.trim();
 
-      const { status, data } = await callProvider("/api/v1/asegurados", { method: "POST", body });
+      const { status, data } = await callProvider("/api/v2/asegurados", { method: "POST", body });
       if (status === 201) {
         setRegResult(data);
         setReg(EMPTY_REG);
@@ -264,7 +264,7 @@ export default function App() {
               <>
                 <div className="mb-4 flex items-center justify-end">
                   <span className="font-mono text-[11px] text-slate-400">
-                    GET /api/v1/asegurados/validar
+                    GET /api/v2/asegurados/validar
                   </span>
                 </div>
 
@@ -327,7 +327,7 @@ export default function App() {
             ) : (
               <>
                 <div className="mb-4 flex items-center justify-end">
-                  <span className="font-mono text-[11px] text-slate-400">POST /api/v1/asegurados</span>
+                  <span className="font-mono text-[11px] text-slate-400">POST /api/v2/asegurados</span>
                 </div>
 
                 <div className="space-y-4">
